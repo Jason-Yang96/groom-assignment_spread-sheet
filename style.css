@@ -13,7 +13,7 @@
     text-align: center;
     background-color: rgba(143, 223, 143, 0.918);
 }
-.cell.header.active {
+.cell.header.clicked {
     color:white;
-    background-color: blue;
+    background-color: rgb(107, 152, 204);
 }
