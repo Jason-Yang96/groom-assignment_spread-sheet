@@ -1,5 +1,4 @@
-/* 7. cell 스타일 생성하기 */
-.cell-row {
+.row-container {
     display: flex; /* 6. 요소를 1행씩 감싸주는 container를 만든 뒤에 이 1행을 한줄로 만들어 준다. */
 }
 
