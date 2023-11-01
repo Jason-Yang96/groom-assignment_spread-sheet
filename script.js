@@ -4,7 +4,8 @@ const sellectedCellInfo = document.querySelector('#cell-status');
 const numOfRows = 15;
 const numOfCols = 15;
 const spreadsheetArray = [];
-const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
+'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 // 3. 문자열이 아닌 객체 데이터 생성하기
 class Cell {
     constructor(row, col, cellName, cellData, isHeader, disabled) {
@@ -17,9 +18,7 @@ class Cell {
     }
 }
 
-btnExportingSpreadsheet.addEventListener('click', function(){
-    exportSpreadsheet()
-});
+btnExportingSpreadsheet.addEventListener('click', function(){exportSpreadsheet()});
 
 createTable();
 
