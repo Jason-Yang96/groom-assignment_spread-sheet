@@ -1,22 +1,15 @@
+import {Cell} from "./Cell.js";
+
 const spreadsheetContainer = document.querySelector('#spreadsheet-container');
 const btnExportingSpreadsheet = document.querySelector('#export-btn');
 const sellectedCellInfo = document.querySelector('#cell-status');
 const numOfRows = 15;
 const numOfCols = 15;
 const spreadsheetArray = [];
-const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
-'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-// 3. 문자열이 아닌 객체 데이터 생성하기
-class Cell {
-    constructor(row, col, cellName, cellData, isHeader, disabled) {
-        this.row = row;
-        this.col = col;
-        this.cellName = cellName;
-        this.cellData = cellData;
-        this.isHeader = isHeader;
-        this.disabled = false;
-    }
-}
+const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+
 
 btnExportingSpreadsheet.addEventListener('click', function(){exportSpreadsheet()});
 
@@ -46,8 +39,7 @@ function createTable(){
         spreadsheetArray.push(rowList);
     }
     creatCellElement();
-};
-
+}
 function creatCellElement(){
     for(let i = 0; i < spreadsheetArray.length; i++){
         const rowContainer = document.createElement('div');
@@ -60,10 +52,10 @@ function creatCellElement(){
             cellElement.value = cell.cellData;
             cellElement.disabled = cell.disabled;
             
-            cellElement.addEventListener('click', function(){specifyClickedElement(cell)});
-            cellElement.addEventListener('change', function(){inputText(this.value ,cell)});
+            cellElement.addEventListener('click', ()=>{specifyClickedElement(cell)}); 
+            cellElement.addEventListener('change', function(){inputText(this.value ,cell)}); 
 
-            if(cell.isHeader) {
+            if(cell.isHeader) { 
                 cellElement.classList.add('header');
             }
             
@@ -74,19 +66,19 @@ function creatCellElement(){
 }
 function specifyClickedElement(cell) {
     clickedElements = document.querySelectorAll('.clicked');
-    if (clickedElements.length > 0) {
-        clickedElements.forEach((clickedElement) => {
-            clickedElement.classList.remove('clicked');
-        });
-    }
-    const rowIndexOfSellectedCell = cell.row;
-    const colIndexOfSellectedCell = cell.col;
-    const rowCellOfSellectedCell = document.getElementById(`0-${colIndexOfSellectedCell}`);
-    const colCellOfSellectedCell = document.getElementById(`${rowIndexOfSellectedCell}-0`);
-    rowCellOfSellectedCell.classList.add('clicked');
-    colCellOfSellectedCell.classList.add('clicked');
+    clickedElements.forEach((clickedElement) => {
+        clickedElement.classList.remove('clicked');
+    })
+    const rowNum = cell.row;
+    const colNum = cell.col;
 
-    sellectedCellInfo.innerHTML = alphabetArray[colIndexOfSellectedCell - 1] + rowIndexOfSellectedCell;
+    const rowCell = document.getElementById(`0-${colNum}`);
+    const colCell = document.getElementById(`${rowNum}-0`);
+    
+    rowCell.classList.add('clicked');
+    colCell.classList.add('clicked');
+
+    sellectedCellInfo.innerHTML = alphabetArray[colNum - 1] + rowNum;
 }
 function inputText(data ,cell){
     cell.cellData = data;
