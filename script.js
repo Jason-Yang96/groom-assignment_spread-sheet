@@ -52,7 +52,7 @@ function creatCellElement(){
             cellElement.value = cell.cellData;
             cellElement.disabled = cell.disabled;
             
-            cellElement.addEventListener('click', ()=>{specifyClickedElement(cell)}); 
+            cellElement.addEventListener('click', ()=>specifyClickedElement(cell)); 
             cellElement.addEventListener('change', function(){inputText(this.value ,cell)}); 
 
             if(cell.isHeader) { 
